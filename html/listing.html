@@ -1,0 +1,153 @@
+<link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/style.css">
+
+<style>
+    :host {
+        display: grid;
+        grid: auto 1fr / 1fr;
+        grid-gap: 1em;
+    }
+
+    :host > toolbar {
+        display: grid;
+        grid-auto-flow: column;
+        grid-gap: 1em;
+        justify-content: space-between;
+        z-index: 2;
+        padding: .5em;
+        background-color: #fff1;
+    }
+
+    :host > toolbar > fyn-common-graphics-image {
+        width: 3em;
+        height: 3em;
+    }
+
+    :host > toolbar > [user] span {
+        white-space: nowrap;
+    }
+
+    fyn-common-layout-list {
+        grid-gap: .5em;
+    }
+
+    fyn-common-graphics-image[participant] {
+        --img-radius: 50%;
+        width: 2.5em;
+        height: 2.5em;
+    }
+
+    fyn-common-graphics-image[participant] fyn-common-graphics-icon {
+        position: absolute;
+        right: -.25em;
+        bottom: -.25em;
+        width: 1.5em;
+        height: 1.5em;
+        padding: .25em;
+        font-size: .75em;
+        background-color: var(--bg, var(--info));
+        border-radius: 50%;
+    }
+
+    @media (max-width: 768px) {
+        :host {
+
+        }
+
+        table thead {
+            display: none;
+        }
+
+        table tbody,
+        table tbody tr {
+            display: grid;
+            grid-gap: 1em;
+            padding: 1em;
+        }
+
+        table tbody tr {
+            background-color: #fff1;
+        }
+
+        fyn-common-overlay-dialog {
+            width: 100vw;
+            height: calc(100vh - 4em);
+            top: auto;
+            left: 0;
+            bottom: 0;
+            transform: none;
+            box-shadow: none;
+        }
+    }
+</style>
+
+<toolbar>
+    <fyn-common-graphics-image src="/img/logo.png" logo></fyn-common-graphics-image>
+
+    <fyn-common-form-button multi flat user>
+        <fyn-common-graphics-image 
+            src="/img/chris-p-bacon.png" 
+            participant
+        ></fyn-common-graphics-image>
+        
+        
+        <span slot="options" action="new">New event</span>
+
+        <span slot="options" action="settings">Settings</span>
+
+        <span slot="options" action="logout">Logout</span>
+    </span>
+</toolbar>
+
+<table striped>
+    <thead>
+        <tr>
+            <th>Activity</th>
+
+            <th>Start</th>
+            
+            <th>End</th>
+
+            <th>Link</th>
+
+            <th>Participants</th>
+        </tr>
+    </thead>
+
+    <tbody for="{{ activity in activities }}">
+        <tr>
+            <td>{{ activity.name }}</td>
+
+            <td>{{ activity.start }}</td>
+            
+            <td>{{ activity.end }}</td>
+
+            <td>
+                <a href="{{ activity.link }}" target="_blank" rel="noopener nofollow">{{ activity.link }}</a>
+            </td>
+
+            <td>
+                <fyn-common-layout-list for="{{ paricipant in activity.participants }}" horizontal>
+                    <fyn-common-graphics-image 
+                        src="{{ paricipant.img }}" 
+                        tooltip="{{ paricipant.name }}"
+                        participant
+                    >
+                        <fyn-common-graphics-icon 
+                            icons="{{ paricipant.state.icon }}" 
+                            tooltip="{{ paricipant.state.text }}"
+                            style="--bg: {{ paricipant.state.color }}"
+                        ></fyn-common-graphics-icon>
+                    </fyn-common-graphics-image>
+                </fyn-common-layout-list>
+            </td>
+        </tr>
+    </tbodyead>
+</table>
+
+<fyn-common-overlay-dialog settings>
+    <fyn-common-form-form>
+        <eventprikker-settings></eventprikker-settings>
+        
+        <fyn-common-form-button role="cancel" slot="buttons" flat>Close</fyn-common-form-button>
+    </fyn-common-form-form>
+</fyn-common-overlay-dialog>

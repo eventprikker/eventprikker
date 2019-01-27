@@ -1,0 +1,22 @@
+<link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/style.css">
+
+<style>
+    :host {
+        display: grid;
+        grid: auto 1fr / 1fr;
+        grid-gap: 1em;
+    }
+</style>
+
+<fyn-common-layout-tabs>
+    <fyn-common-layout-list tab-title="options" active>
+        <fyn-common-form-group>
+            <span>Some options</span>
+            
+            <fyn-common-form-checkbox toggle></fyn-common-form-checkbox>
+        </fyn-common-form-group>
+    </fyn-common-layout-list>
+
+    <fyn-common-layout-list tab-title="connections">
+    </fyn-common-layout-list>
+</fyn-common-layout-tabs>

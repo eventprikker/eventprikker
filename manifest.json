@@ -1,0 +1,31 @@
+{
+    "name": "Eventprikker",
+    "icons": [
+        {
+            "src": "/img/logo.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "/img/logo.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "/img/logo.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/img/logo.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        }
+    ],
+    "start_url": "",
+    "display": "standalone",
+    "theme_color": "#eee",
+    "background_color": "#222",
+    "orientation": "portrait",
+    "gcm_sender_id": "248709007497"
+    }
