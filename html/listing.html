@@ -49,7 +49,8 @@
     }
 
     fyn-common-overlay-dialog[settings] eventprikker-settings {
-        margin-top: -2.5em;
+        margin-top: -2.25em;
+        backdrop-filter: blur(3px);
     }
 
     @media (max-width: 768px) {
@@ -99,7 +100,7 @@
         <span slot="options" action="settings">Settings</span>
 
         <span slot="options" action="logout">Logout</span>
-    </span>
+    </fyn-common-form-button>
 </toolbar>
 
 <table striped>
@@ -148,8 +149,20 @@
     </tbodyead>
 </table>
 
-<fyn-common-overlay-dialog settings open img="/img/banner.jpg" title="Settings">
+<fyn-common-overlay-dialog new open img="/img/banner.jpg" title="New activity">
+    <fyn-common-form-form>
+        <fyn-common-form-input label="Name"></fyn-common-form-input>
+
+        <fyn-common-form-datetime label="Start"></fyn-common-form-datetime>
+
+        <fyn-common-form-button role="submit" slot="buttons" primary>Submit</fyn-common-form-button>
+
+        <fyn-common-form-button role="cancel" slot="buttons" flat>Close</fyn-common-form-button>
+    </fyn-common-form-form>
+</fyn-common-overlay-dialog>
+
+<fyn-common-overlay-dialog settings img="/img/banner.jpg" title="Settings">
     <eventprikker-settings></eventprikker-settings>
     
-    <fyn-common-form-button role="cancel" slot="footer" flat>Close</fyn-common-form-button>
+    <fyn-common-form-button action="close" slot="footer" flat>Close</fyn-common-form-button>
 </fyn-common-overlay-dialog>

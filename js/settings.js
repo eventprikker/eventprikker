@@ -10,5 +10,10 @@ export default class Settings extends Fyn.Component
 
     ready()
     {
+        this.on({
+            click: () => {
+                
+            },
+        });
     }
 }

@@ -82,6 +82,7 @@ export default class Listing extends Fyn.Component
 
     ready()
     {
+        const activity = this.shadow.querySelector('fyn-common-overlay-dialog[new]');
         const settings = this.shadow.querySelector('fyn-common-overlay-dialog[settings]');
 
         this.on('[user]', {
@@ -89,6 +90,7 @@ export default class Listing extends Fyn.Component
                 switch(e.detail.action)
                 {
                     case 'new':
+                        activity.show();
                         return;
 
                     case 'settings':
