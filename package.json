@@ -1,30 +1,25 @@
 {
-    "name": "@cpbs/age",
-    "description": "A.G.E.",
+    "name": "@cpbs/eventprikker",
+    "description": "eventprikker",
     "version": "0.0.1",
     "main": "index.html",
-    "scripts": {
-        "release": "npm-github-release"
-    },
+    "scripts": {},
     "repository": {
         "type": "git",
-        "url": "https://github.com/chris-kruining/A.G.E"
+        "url": "https://github.com/chris-kruining/eventprikker"
     },
     "keywords": [],
     "author": "Chris Kruining",
     "license": "BSD",
     "bugs": {
-        "url": "https://github.com/chris-kruining/A.G.E/issues"
+        "url": "https://github.com/chris-kruining/eventprikker/issues"
     },
-    "homepage": "https://github.com/chris-kruining/A.G.E",
+    "homepage": "https://github.com/chris-kruining/eventprikker",
     "publishConfig": {
         "access": "public"
     },
     "dependencies": {
-        "@fyn-software/component": "0.0.2",
-        "@fyn-software/suite": "0.0.2"
-    },
-    "devDependencies": {
-        "npm-github-release": "0.9.0"
+        "@fyn-software/component": "^0.0.2",
+        "@fyn-software/suite": "^0.0.2"
     }
 }

@@ -48,6 +48,10 @@
         border-radius: 50%;
     }
 
+    fyn-common-overlay-dialog[settings] eventprikker-settings {
+        margin-top: -2.5em;
+    }
+
     @media (max-width: 768px) {
         :host {
 
@@ -70,7 +74,7 @@
 
         fyn-common-overlay-dialog {
             width: 100vw;
-            height: calc(100vh - 4em);
+            height: 100vh;
             top: auto;
             left: 0;
             bottom: 0;
@@ -144,10 +148,8 @@
     </tbodyead>
 </table>
 
-<fyn-common-overlay-dialog settings>
-    <fyn-common-form-form>
-        <eventprikker-settings></eventprikker-settings>
-        
-        <fyn-common-form-button role="cancel" slot="buttons" flat>Close</fyn-common-form-button>
-    </fyn-common-form-form>
+<fyn-common-overlay-dialog settings open img="/img/banner.jpg" title="Settings">
+    <eventprikker-settings></eventprikker-settings>
+    
+    <fyn-common-form-button role="cancel" slot="footer" flat>Close</fyn-common-form-button>
 </fyn-common-overlay-dialog>
