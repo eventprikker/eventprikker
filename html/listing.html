@@ -48,6 +48,12 @@
         border-radius: 50%;
     }
 
+    fyn-common-form-button[fab] {
+        position: absolute;
+        right: 2em;
+        bottom: 2em;
+    }
+
     fyn-common-overlay-dialog[settings] eventprikker-settings {
         margin-top: -2.25em;
         backdrop-filter: blur(3px);
@@ -79,7 +85,7 @@
             top: auto;
             left: 0;
             bottom: 0;
-            transform: none;
+            --translation: 0;
             box-shadow: none;
         }
     }
@@ -89,13 +95,10 @@
     <fyn-common-graphics-image src="/img/logo.png" logo></fyn-common-graphics-image>
 
     <fyn-common-form-button multi flat user>
-        <fyn-common-graphics-image 
-            src="/img/chris-p-bacon.png" 
+        <fyn-common-graphics-image
+            src="{{ user.img }}"
             participant
         ></fyn-common-graphics-image>
-        
-        
-        <span slot="options" action="new">New event</span>
 
         <span slot="options" action="settings">Settings</span>
 
@@ -131,25 +134,27 @@
             </td>
 
             <td>
-                <fyn-common-layout-list for="{{ paricipant in activity.participants }}" horizontal>
+                <fyn-common-layout-list for="{{ participant in activity.participants }}" horizontal>
                     <fyn-common-graphics-image 
-                        src="{{ paricipant.img }}" 
-                        tooltip="{{ paricipant.name }}"
+                        src="{{ participant.img }}" 
+                        tooltip="{{ participant.name }}"
                         participant
                     >
                         <fyn-common-graphics-icon 
-                            icons="{{ paricipant.state.icon }}" 
-                            tooltip="{{ paricipant.state.text }}"
-                            style="--bg: {{ paricipant.state.color }}"
+                            icons="{{ participant.state.icon }}" 
+                            tooltip="{{ participant.state.text }}"
+                            style="--bg: {{ participant.state.color }}"
                         ></fyn-common-graphics-icon>
                     </fyn-common-graphics-image>
                 </fyn-common-layout-list>
             </td>
         </tr>
-    </tbodyead>
+    </tbody>
 </table>
 
-<fyn-common-overlay-dialog new open img="/img/banner.jpg" title="New activity">
+<fyn-common-form-button fab icons="plus"></fyn-common-form-button>
+
+<fyn-common-overlay-dialog new img="/img/banner.jpg" title="New activity">
     <fyn-common-form-form>
         <fyn-common-form-input label="Name"></fyn-common-form-input>
 
@@ -163,6 +168,6 @@
 
 <fyn-common-overlay-dialog settings img="/img/banner.jpg" title="Settings">
     <eventprikker-settings></eventprikker-settings>
-    
+
     <fyn-common-form-button action="close" slot="footer" flat>Close</fyn-common-form-button>
 </fyn-common-overlay-dialog>

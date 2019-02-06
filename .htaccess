@@ -1,0 +1,6 @@
+#AddType application/json .json
+#<FilesMatch "manifest.json">
+#    Order Allow,Deny
+#    Allow from all
+#    Satisfy any
+#</FilesMatch>

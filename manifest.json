@@ -22,9 +22,9 @@
             "sizes": "512x512"
         }
     ],
-    "start_url": "",
+    "start_url": "https://eventprikker.nl",
     "display": "standalone",
-    "theme_color": "#eee",
+    "theme_color": "#222",
     "background_color": "#222",
     "orientation": "portrait",
     "gcm_sender_id": "248709007497"

@@ -14,7 +14,7 @@ export default class Listing extends Fyn.Component
                     participants: [
                         {
                             name: 'Chris P Bacon',
-                            img: '/img/chris-p-bacon.png',
+                            img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
                             state: {
                                 text: 'Going',
                                 icon: 'check',
@@ -58,7 +58,7 @@ export default class Listing extends Fyn.Component
                     participants: [
                         {
                             name: 'Chris P Bacon',
-                            img: '/img/chris-p-bacon.png',
+                            img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
                             state: {
                                 text: 'Going',
                                 icon: 'check',
@@ -77,6 +77,7 @@ export default class Listing extends Fyn.Component
                     ],
                 },
             ],
+            user: null,
         };
     }
 
@@ -85,20 +86,29 @@ export default class Listing extends Fyn.Component
         const activity = this.shadow.querySelector('fyn-common-overlay-dialog[new]');
         const settings = this.shadow.querySelector('fyn-common-overlay-dialog[settings]');
 
+        this.on('[fab]', {
+            click: e => {
+                activity.show();
+            },
+        });
+
         this.on('[user]', {
             click: e => {
                 switch(e.detail.action)
                 {
-                    case 'new':
-                        activity.show();
-                        return;
-
                     case 'settings':
                         settings.show();
 
                         return;
                         
                     case 'logout':
+                        for(const n of [ 'google', 'facebook' ])
+                        {
+                            hello(n).logout();
+                        }
+
+                        window.location.reload();
+
                         return;
                 }
             },
