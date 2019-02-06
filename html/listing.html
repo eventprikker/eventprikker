@@ -112,7 +112,7 @@
             <th>Activity</th>
 
             <th>Start</th>
-            
+
             <th>End</th>
 
             <th>Link</th>
@@ -126,7 +126,7 @@
             <td>{{ activity.name }}</td>
 
             <td>{{ activity.start }}</td>
-            
+
             <td>{{ activity.end }}</td>
 
             <td>
@@ -135,13 +135,13 @@
 
             <td>
                 <fyn-common-layout-list for="{{ participant in activity.participants }}" horizontal>
-                    <fyn-common-graphics-image 
-                        src="{{ participant.img }}" 
+                    <fyn-common-graphics-image
+                        src="{{ participant.img }}"
                         tooltip="{{ participant.name }}"
                         participant
                     >
-                        <fyn-common-graphics-icon 
-                            icons="{{ participant.state.icon }}" 
+                        <fyn-common-graphics-icon
+                            icons="{{ participant.state.icon }}"
                             tooltip="{{ participant.state.text }}"
                             style="--bg: {{ participant.state.color }}"
                         ></fyn-common-graphics-icon>
@@ -159,6 +159,8 @@
         <fyn-common-form-input label="Name"></fyn-common-form-input>
 
         <fyn-common-form-datetime label="Start"></fyn-common-form-datetime>
+
+        <fyn-common-form-datetime label="End"></fyn-common-form-datetime>
 
         <fyn-common-form-button role="submit" slot="buttons" primary>Submit</fyn-common-form-button>
 
