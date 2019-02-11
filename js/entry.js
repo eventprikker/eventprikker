@@ -2,11 +2,6 @@ import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
 
 export default class Entry extends Fyn.Component
 {
-    static get properties()
-    {
-        return {};
-    }
-
     ready()
     {
         this.on('fyn-common-form-button[action]', {
