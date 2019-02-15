@@ -61,11 +61,23 @@
 
     @media (max-width: 768px) {
         :host {
+            /*align-self: center;*/
+            /*justify-self: center;*/
+            overflow: hidden;
+        }
 
+        table {
+            display: block;
+            overflow: hidden;
         }
 
         table thead {
             display: none;
+        }
+
+        table tbody {
+            overflow-y: auto;
+            height: 100%;
         }
 
         table tbody,
@@ -76,7 +88,26 @@
         }
 
         table tbody tr {
+            grid-template-columns: repeat(2, 1fr);
             background-color: #fff1;
+            backdrop-filter: blur(5px);
+            border-radius: var(--radius);
+        }
+
+        table tbody tr td {
+            padding: 0;
+        }
+
+
+        table tbody tr td:nth-child(1),
+        table tbody tr td:nth-child(4),
+        table tbody tr td:nth-child(5) {
+            grid-column: span 2;
+        }
+
+
+        table tbody tr td:nth-child(1) {
+            font-size: 2em;
         }
 
         fyn-common-overlay-dialog {
