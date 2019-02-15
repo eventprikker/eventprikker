@@ -2,3 +2,8 @@
     /* --primary-bg: #B2FF59; */
     /* --primary-fg: #000a; */
 }
+
+body {
+    display: grid;
+    background: #222 linear-gradient(to bottom right, #0000, #77a7);
+}
