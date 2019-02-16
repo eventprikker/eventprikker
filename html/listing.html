@@ -30,21 +30,23 @@
         grid-gap: .5em;
     }
 
-    fyn-common-graphics-image[participant] {
-        --img-radius: 50%;
+    fyn-common-graphics-icon[stat] {
         width: 2.5em;
-        height: 2.5em;
+        padding: .5em 0;
+        background-color: var(--bg, var(--info));
+        border-radius: 50%;
     }
 
-    fyn-common-graphics-image[participant] fyn-common-graphics-icon {
+    fyn-common-graphics-icon[stat] span {
         position: absolute;
         right: -.25em;
         bottom: -.25em;
         width: 1.5em;
         height: 1.5em;
-        padding: .25em;
+        line-height: 1.5em;
         font-size: .75em;
-        background-color: var(--bg, var(--info));
+        text-align: center;
+        background-color: #222;
         border-radius: 50%;
     }
 
@@ -166,18 +168,15 @@
             </td>
 
             <td>
-                <fyn-common-layout-list for="{{ participant in activity.participants }}" horizontal>
-                    <fyn-common-graphics-image
-                        src="{{ participant.img }}"
-                        tooltip="{{ participant.name }}"
-                        participant
+                <fyn-common-layout-list for="{{ stat in activity.stats }}" horizontal>
+                    <fyn-common-graphics-icon
+                            stat
+                            icons="{{ stat.icon }}"
+                            tooltip="{{ stat.text }}"
+                            style="--bg: {{ stat.color }}"
                     >
-                        <fyn-common-graphics-icon
-                            icons="{{ participant.state.icon }}"
-                            tooltip="{{ participant.state.text }}"
-                            style="--bg: {{ participant.state.color }}"
-                        ></fyn-common-graphics-icon>
-                    </fyn-common-graphics-image>
+                        <span>{{ stat.count }}</span>
+                    </fyn-common-graphics-icon>
                 </fyn-common-layout-list>
             </td>
         </tr>
