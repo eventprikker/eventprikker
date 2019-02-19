@@ -26,10 +26,6 @@
             import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
             import Listing from './js/listing.js';
 
-            hello.on('auth.init', e => {
-                console.log(e);
-            });
-
             hello.on('auth.login', e => {
                 const entry = document.querySelector('eventprikker-entry');
 
@@ -38,17 +34,17 @@
                     entry.setAttribute('loading', '');
 
                     hello(e.network)
-                            .api('me')
-                            .then(auth => {
-                                const listing = new Listing();
-                                listing.user = {
-                                    id: auth.id,
-                                    img: auth.picture || auth.image.url,
-                                    name: auth.name,
-                                };
+                        .api('me')
+                        .then(auth => {
+                            const listing = new Listing();
+                            listing.user = {
+                                id: auth.id,
+                                img: auth.picture || auth.image.url,
+                                name: auth.name,
+                            };
 
-                                document.body.replaceChild(listing, entry);
-                            });
+                            document.body.replaceChild(listing, entry);
+                        });
                 }
             });
 
