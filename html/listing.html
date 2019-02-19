@@ -161,20 +161,20 @@
         </tr>
     </thead>
 
-    <tbody for="{{ activity in activities }}">
+    <tbody for="{{ event in events }}">
         <tr>
-            <td>{{ activity.name }}</td>
+            <td>{{ event.name }}</td>
 
-            <td>{{ activity.start }}</td>
+            <td>{{ event.start }}</td>
 
-            <td>{{ activity.end }}</td>
+            <td>{{ event.end }}</td>
 
             <td>
-                <a href="{{ activity.link }}" target="_blank" rel="noopener nofollow">{{ activity.link }}</a>
+                <a href="{{ event.link }}" target="_blank" rel="noopener nofollow">{{ event.link }}</a>
             </td>
 
             <td>
-                <fyn-common-layout-list for="{{ stat in activity.stats }}" horizontal>
+                <fyn-common-layout-list for="{{ stat in event.stats }}" horizontal>
                     <fyn-common-graphics-icon
                             stat
                             icons="{{ stat.icon }}"

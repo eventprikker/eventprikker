@@ -6,7 +6,7 @@ export default class Listing extends Fyn.Component
     static get properties()
     {
         return {
-            activities: [
+            events: [
                 Event.fromData({
                     name: 'the party',
                     start: '19-04-2019',
@@ -120,14 +120,12 @@ export default class Listing extends Fyn.Component
 
     ready()
     {
-        console.log(this.activities);
-
-        const activity = this.shadow.querySelector('fyn-common-overlay-dialog[new]');
+        const event = this.shadow.querySelector('fyn-common-overlay-dialog[new]');
         const settings = this.shadow.querySelector('fyn-common-overlay-dialog[settings]');
 
         this.on('[fab]', {
             click: e => {
-                activity.show();
+                event.show();
             },
         });
 
