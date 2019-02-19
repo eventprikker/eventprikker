@@ -1,4 +1,6 @@
 import Model from '/node_modules/@fyn-software/data/model.js';
+import String from '/node_modules/@fyn-software/data/type/string.js';
+import Array from '/node_modules/@fyn-software/data/type/array.js';
 
 const state = {
     invited: {
@@ -32,16 +34,18 @@ export default class Event extends Model
     static get properties()
     {
         return {
-            name: 'the party',
-            start: '',
-            end: '',
-            link: '',
-            participants: [],
+            name: String('the party'),
+            start: String(''),
+            end: String(''),
+            link: String(''),
+            participants: Array([]),
         };
     }
 
     get stats()
     {
+        this.participants = null;
+
         const stats = {
             invited: 0,
             yes: 0,
@@ -54,7 +58,7 @@ export default class Event extends Model
             stats[participant.state.value]++;
         }
 
-        return Object.entries(stats).filter(([ ,c ]) => c > 0).map(([ t, c]) => Object.assign(state[t], { count: c }));
+        return Array(Object.entries(stats).filter(([ ,c ]) => c > 0).map(([ t, c]) => Object.assign(state[t], { count: c })));
     }
 
     static get state()
