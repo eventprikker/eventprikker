@@ -56,7 +56,9 @@ export default class Event extends Model
             stats[participant.state.value]++;
         }
 
-        return Array(Object.entries(stats).filter(([ ,c ]) => c > 0).map(([ t, c]) => Object.assign(state[t], { count: c })));
+        return Object.entries(stats)
+            .filter(([ ,c ]) => c > 0)
+            .map(([ t, c]) => Object.assign(state[t], { count: c }));
     }
 
     static get state()
