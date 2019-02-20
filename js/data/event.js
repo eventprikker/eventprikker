@@ -44,8 +44,6 @@ export default class Event extends Model
 
     get stats()
     {
-        this.participants = null;
-
         const stats = {
             invited: 0,
             yes: 0,
