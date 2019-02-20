@@ -1,6 +1,5 @@
 import Model from '/node_modules/@fyn-software/data/model.js';
-import String from '/node_modules/@fyn-software/data/type/string.js';
-import Array from '/node_modules/@fyn-software/data/type/array.js';
+import * as Types from '/node_modules/@fyn-software/data/types.js';
 
 const state = {
     invited: {
@@ -34,11 +33,11 @@ export default class Event extends Model
     static get properties()
     {
         return {
-            name: String('the party'),
-            start: String(''),
-            end: String(''),
-            link: String(''),
-            participants: Array([]),
+            name: Types.String('the party'),
+            start: Types.String(''),
+            end: Types.String(''),
+            link: Types.String(''),
+            participants: Types.Array([]),
         };
     }
 
