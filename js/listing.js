@@ -1,5 +1,6 @@
 import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
 import Event from './data/event.js';
+import Participant from './data/participant.js';
 
 export default class Listing extends Fyn.Component
 {
@@ -13,86 +14,86 @@ export default class Listing extends Fyn.Component
                     end: '21-04-2019',
                     link: 'https://the-party.nl',
                     participants: [
-                        {
+                        Participant.fromData({
                             name: 'Chris P Bacon',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
-                            state: Event.state.yes,
-                        },
-                        {
+                            state: Participant.state.yes,
+                        }),
+                        Participant.fromData({
                             name: 'GieltjE',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/15/154f5631dd97bc4284716bad2230f8ed115a1234_full.jpg',
-                            state: Event.state.yes,
-                        },
-                        {
+                            state: Participant.state.yes,
+                        }),
+                        Participant.fromData({
                             name: 'Fineas',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2e/2e9c3a4a93ad0424a4c0055474f7ada8a5a82175_full.jpg',
-                            state: Event.state.yes,
-                        },
-                        {
+                            state: Participant.state.yes,
+                        }),
+                        Participant.fromData({
                             name: 'satan JR',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c9/c96cc316a34375029379be358ba4543752b8c563_full.jpg',
-                            state: Event.state.yes,
-                        },
-                        {
+                            state: Participant.state.yes,
+                        }),
+                        Participant.fromData({
                             name: 'Chris P Bacon',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
-                            state: Event.state.invited,
-                        },
-                        {
+                            state: Participant.state.invited,
+                        }),
+                        Participant.fromData({
                             name: 'GieltjE',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/15/154f5631dd97bc4284716bad2230f8ed115a1234_full.jpg',
-                            state: Event.state.invited,
-                        },
-                        {
+                            state: Participant.state.invited,
+                        }),
+                        Participant.fromData({
                             name: 'Fineas',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2e/2e9c3a4a93ad0424a4c0055474f7ada8a5a82175_full.jpg',
-                            state: Event.state.invited,
-                        },
-                        {
+                            state: Participant.state.invited,
+                        }),
+                        Participant.fromData({
                             name: 'satan JR',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c9/c96cc316a34375029379be358ba4543752b8c563_full.jpg',
-                            state: Event.state.invited,
-                        },
-                        {
+                            state: Participant.state.invited,
+                        }),
+                        Participant.fromData({
                             name: 'Chris P Bacon',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
-                            state: Event.state.no,
-                        },
-                        {
+                            state: Participant.state.no,
+                        }),
+                        Participant.fromData({
                             name: 'GieltjE',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/15/154f5631dd97bc4284716bad2230f8ed115a1234_full.jpg',
-                            state: Event.state.no,
-                        },
-                        {
+                            state: Participant.state.no,
+                        }),
+                        Participant.fromData({
                             name: 'Fineas',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2e/2e9c3a4a93ad0424a4c0055474f7ada8a5a82175_full.jpg',
-                            state: Event.state.no,
-                        },
-                        {
+                            state: Participant.state.no,
+                        }),
+                        Participant.fromData({
                             name: 'satan JR',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c9/c96cc316a34375029379be358ba4543752b8c563_full.jpg',
-                            state: Event.state.no,
-                        },
-                        {
+                            state: Participant.state.no,
+                        }),
+                        Participant.fromData({
                             name: 'Chris P Bacon',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
-                            state: Event.state.maybe,
-                        },
-                        {
+                            state: Participant.state.maybe,
+                        }),
+                        Participant.fromData({
                             name: 'GieltjE',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/15/154f5631dd97bc4284716bad2230f8ed115a1234_full.jpg',
-                            state: Event.state.maybe,
-                        },
-                        {
+                            state: Participant.state.maybe,
+                        }),
+                        Participant.fromData({
                             name: 'Fineas',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/2e/2e9c3a4a93ad0424a4c0055474f7ada8a5a82175_full.jpg',
-                            state: Event.state.maybe,
-                        },
-                        {
+                            state: Participant.state.maybe,
+                        }),
+                        Participant.fromData({
                             name: 'satan JR',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/c9/c96cc316a34375029379be358ba4543752b8c563_full.jpg',
-                            state: Event.state.maybe,
-                        },
+                            state: Participant.state.maybe,
+                        }),
                     ],
                 }),
                 Event.fromData({
@@ -101,16 +102,16 @@ export default class Listing extends Fyn.Component
                     end: '05-08-2019',
                     link: 'https://campzone.nl',
                     participants: [
-                        {
+                        Participant.fromData({
                             name: 'Chris P Bacon',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e8/e8015e4e96f5d55e4326e796c15daa4ea0822c09_full.jpg',
-                            state: Event.state.yes,
-                        },
-                        {
+                            state: Participant.state.yes,
+                        }),
+                        Participant.fromData({
                             name: 'GieltjE',
                             img: 'https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/15/154f5631dd97bc4284716bad2230f8ed115a1234_full.jpg',
-                            state: Event.state.yes,
-                        },
+                            state: Participant.state.yes,
+                        }),
                     ],
                 }),
             ],

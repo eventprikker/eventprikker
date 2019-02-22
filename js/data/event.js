@@ -1,43 +1,17 @@
 import Model from '/node_modules/@fyn-software/data/model.js';
 import * as Types from '/node_modules/@fyn-software/data/types.js';
-
-const state = {
-    invited: {
-        text: 'Invited',
-        icon: 'envelope',
-        color: 'var(--info)',
-        value: 'invited',
-    },
-    yes: {
-        text: 'Going',
-        icon: 'check',
-        color: 'var(--success)',
-        value: 'yes',
-    },
-    maybe: {
-        text: 'Maybe',
-        icon: 'hourglass',
-        color: 'var(--warning)',
-        value: 'maybe',
-    },
-    no: {
-        text: 'Declined',
-        icon: 'times',
-        color: 'var(--failure)',
-        value: 'no',
-    },
-};
+import Participant from './participant.js';
 
 export default class Event extends Model
 {
     static get properties()
     {
         return {
-            name: Types.String('the party'),
-            start: Types.String(''),
-            end: Types.String(''),
-            link: Types.String(''),
-            participants: Types.Array([]),
+            name: Types.String.default('the party'),
+            start: Types.String.default(''),
+            end: Types.String.default(''),
+            link: Types.String.default(''),
+            participants: Types.List.type(Participant).default([]),
         };
     }
 
@@ -57,11 +31,6 @@ export default class Event extends Model
 
         return Object.entries(stats)
             .filter(([ ,c ]) => c > 0)
-            .map(([ t, c]) => Object.assign(state[t], { count: c }));
-    }
-
-    static get state()
-    {
-        return state;
+            .map(([ t, c]) => Object.assign(Participant.state.valueOf(Participant.state[t]), { count: c }));
     }
 }
