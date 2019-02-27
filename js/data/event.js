@@ -31,6 +31,6 @@ export default class Event extends Model
 
         return Object.entries(stats)
             .filter(([ ,c ]) => c > 0)
-            .map(([ t, c]) => Object.assign(Participant.state.valueOf(Participant.state[t]), { count: c }));
+            .map(([ t, c]) => Object.assign({ count: c }, Participant.state.valueOf(Participant.state[t])));
     }
 }
