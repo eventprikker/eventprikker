@@ -7,6 +7,7 @@ export default class Participant extends Model
     static get properties()
     {
         return {
+            id: Types.Number.default(-1),
             name: Types.String.default(''),
             img: Types.String.default(''),
             state: State.default(State.invited),
