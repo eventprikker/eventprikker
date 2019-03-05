@@ -26,6 +26,10 @@
         white-space: nowrap;
     }
 
+    :host > table {
+        align-self: start;
+    }
+
     fyn-common-layout-list {
         grid-gap: .5em;
     }
@@ -98,15 +102,29 @@
         table tbody tr {
             position: relative;
             grid-template-columns: repeat(2, 1fr);
+            padding-top: 5em;
             background-color: #fff1;
             backdrop-filter: blur(5px);
             border-radius: var(--radius);
         }
 
+        table tbody tr::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 7.75em;
+            background-image: var(--img);
+            background-size: cover;
+            border-radius: inherit;
+            filter: blur(1px) brightness(75%);
+            z-index: -1;
+        }
+
         table tbody tr td {
             padding: 0;
         }
-
 
         table tbody tr td:nth-child(1),
         table tbody tr td:nth-child(4),
@@ -114,9 +132,10 @@
             grid-column: span 2;
         }
 
-
         table tbody tr td:nth-child(1) {
             font-size: 2em;
+            font-weight: 600;
+            text-shadow: 0 0 .5em #000;
         }
 
         fyn-common-overlay-dialog {
@@ -162,7 +181,7 @@
     </thead>
 
     <tbody for="{{ event in events }}">
-        <tr>
+        <tr style="--img: url({{ event.image }})">
             <td>{{ event.name }}</td>
 
             <td>{{ event.start }}</td>

@@ -11,6 +11,7 @@ export default class Event extends Model
             start: Types.String.default(''),
             end: Types.String.default(''),
             link: Types.String.default(''),
+            image: Types.String.default(''),
             participants: Types.List.type(Participant).default([]),
         };
     }

@@ -13,6 +13,7 @@ export default class Listing extends Fyn.Component
                     start: '19-04-2019',
                     end: '21-04-2019',
                     link: 'https://the-party.nl',
+                    image: '/img/party.jpg',
                     participants: [
                         Participant.fromData({
                             name: 'Chris P Bacon',
@@ -101,6 +102,7 @@ export default class Listing extends Fyn.Component
                     start: '26-07-2019',
                     end: '05-08-2019',
                     link: 'https://campzone.nl',
+                    image: '/img/campzone.jpg',
                     participants: [
                         Participant.fromData({
                             name: 'Chris P Bacon',

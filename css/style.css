@@ -7,20 +7,3 @@ body {
     display: grid;
     background: #222 radial-gradient(circle at top left, #0000 40%, #5575);
 }
-
-body::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    display: block;
-    width: 102vw;
-    height: 50vw;
-    background-image: url('/img/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    background-blend-mode: multiply;
-    opacity: .4;
-    z-index: -1;
-}
