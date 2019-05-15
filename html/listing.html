@@ -4,7 +4,6 @@
     :host {
         display: grid;
         grid: auto 1fr / 1fr;
-        grid-gap: 1em;
     }
 
     :host > toolbar {
@@ -26,8 +25,49 @@
         white-space: nowrap;
     }
 
-    :host > table {
-        align-self: start;
+    fyn-common-layout-grid {
+        grid-template-columns: repeat(auto-fit, 25em);
+        align-content: start;
+        padding: 1em;
+    }
+
+    activity {
+        display: grid;
+        grid-gap: 1em;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+        max-width: calc(100% - 1em);
+        padding: 1em;
+        padding-top: 5em;
+        background-color: #fff1;
+        backdrop-filter: blur(5px);
+        border-radius: var(--radius);
+    }
+
+    activity::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 7.75em;
+        background-image: var(--img);
+        background-size: cover;
+        border-radius: inherit;
+        filter: blur(1px) brightness(75%);
+        z-index: -1;
+    }
+
+    activity h1,
+    activity a,
+    activity fyn-common-layout-list {
+        grid-column: span 2;
+    }
+
+    activity h1 {
+        font-size: 2em;
+        font-weight: 600;
+        text-shadow: 0 0 .5em #000;
     }
 
     fyn-common-layout-list {
@@ -78,66 +118,6 @@
             overflow: hidden;
         }
 
-        table {
-            display: block;
-            overflow: hidden;
-        }
-
-        table thead {
-            display: none;
-        }
-
-        table tbody {
-            overflow-y: auto;
-            height: 100%;
-        }
-
-        table tbody,
-        table tbody tr {
-            display: grid;
-            grid-gap: 1em;
-            padding: 1em;
-        }
-
-        table tbody tr {
-            position: relative;
-            grid-template-columns: repeat(2, 1fr);
-            padding-top: 5em;
-            background-color: #fff1;
-            backdrop-filter: blur(5px);
-            border-radius: var(--radius);
-        }
-
-        table tbody tr::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 7.75em;
-            background-image: var(--img);
-            background-size: cover;
-            border-radius: inherit;
-            filter: blur(1px) brightness(75%);
-            z-index: -1;
-        }
-
-        table tbody tr td {
-            padding: 0;
-        }
-
-        table tbody tr td:nth-child(1),
-        table tbody tr td:nth-child(4),
-        table tbody tr td:nth-child(5) {
-            grid-column: span 2;
-        }
-
-        table tbody tr td:nth-child(1) {
-            font-size: 2em;
-            font-weight: 600;
-            text-shadow: 0 0 .5em #000;
-        }
-
         fyn-common-overlay-dialog {
             width: 100vw;
             height: 100vh;
@@ -165,48 +145,28 @@
     </fyn-common-form-button>
 </toolbar>
 
-<table striped>
-    <thead>
-        <tr>
-            <th>Activity</th>
+<fyn-common-layout-grid for="{{ event in events }}" auto-fit>
+    <activity style="--img: url({{ event.image }})">
+        <h1>{{ event.name }}</h1>
 
-            <th>Start</th>
+        <span>{{ event.start }}</span>
 
-            <th>End</th>
+        <span>{{ event.end }}</span>
 
-            <th>Link</th>
+        <a href="{{ event.link }}" target="_blank" rel="noopener nofollow">{{ event.link }}</a>
 
-            <th>Participants</th>
-        </tr>
-    </thead>
-
-    <tbody for="{{ event in events }}">
-        <tr style="--img: url({{ event.image }})">
-            <td>{{ event.name }}</td>
-
-            <td>{{ event.start }}</td>
-
-            <td>{{ event.end }}</td>
-
-            <td>
-                <a href="{{ event.link }}" target="_blank" rel="noopener nofollow">{{ event.link }}</a>
-            </td>
-
-            <td>
-                <fyn-common-layout-list for="{{ stat in event.stats }}" horizontal>
-                    <fyn-common-graphics-icon
-                            stat
-                            icons="{{ stat.icon }}"
-                            tooltip="{{ stat.text }}"
-                            style="--bg: {{ stat.color }}"
-                    >
-                        <span>{{ stat.count }}</span>
-                    </fyn-common-graphics-icon>
-                </fyn-common-layout-list>
-            </td>
-        </tr>
-    </tbody>
-</table>
+        <fyn-common-layout-list for="{{ stat in event.stats }}" horizontal>
+            <fyn-common-graphics-icon
+                stat
+                icons="{{ stat.icon }}"
+                tooltip="{{ stat.text }}"
+                style="--bg: {{ stat.color }}"
+            >
+                <span>{{ stat.count }}</span>
+            </fyn-common-graphics-icon>
+        </fyn-common-layout-list>
+    </activity>
+</fyn-common-layout-grid>
 
 <fyn-common-form-button fab icons="plus"></fyn-common-form-button>
 
