@@ -172,15 +172,15 @@
 
 <fyn-common-overlay-dialog new img="/img/banner.jpg" title="New activity">
     <fyn-common-form-form>
-        <fyn-common-form-input label="Name"></fyn-common-form-input>
+        <fyn-common-form-input label="Name" name="name"></fyn-common-form-input>
 
-        <fyn-common-form-datetime label="Start"></fyn-common-form-datetime>
+        <fyn-common-form-datetime label="Start" name="start"></fyn-common-form-datetime>
 
-        <fyn-common-form-datetime label="End"></fyn-common-form-datetime>
+        <fyn-common-form-datetime label="End" name="end"></fyn-common-form-datetime>
 
-        <fyn-common-form-button role="submit" slot="buttons" primary>Submit</fyn-common-form-button>
+        <fyn-common-form-button action="submit" slot="buttons" primary>Submit</fyn-common-form-button>
 
-        <fyn-common-form-button role="cancel" slot="buttons" flat>Close</fyn-common-form-button>
+        <fyn-common-form-button action="cancel" slot="buttons" flat>Close</fyn-common-form-button>
     </fyn-common-form-form>
 </fyn-common-overlay-dialog>
 

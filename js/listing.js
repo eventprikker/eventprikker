@@ -1,4 +1,5 @@
 import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
+import Dialog from '/node_modules/@fyn-software/suite/js/common/overlay/dialog.js';
 import Event from './data/event.js';
 import Participant from './data/participant.js';
 
@@ -127,8 +128,23 @@ export default class Listing extends Fyn.Component
         const settings = this.shadow.querySelector('fyn-common-overlay-dialog[settings]');
 
         this.on('[fab]', {
-            click: e => {
-                event.show();
+            click: async e => {
+                const event = new Event;
+                const dialog = new Dialog;
+
+                dialog.appendChild(await event.toComponent());
+                const res = await dialog.show();
+
+                console.log(res);
+
+                // const [ result, data ] = await event.show();
+                //
+                // if(result === false)
+                // {
+                //     return;
+                // }
+                //
+                // console.log(Event.fromData(data), data);
             },
         });
 
