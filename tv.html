@@ -1,0 +1,35 @@
+<script type="module">
+    const params = new URL(window.location.href).searchParams;
+    // const offer = new RTCSessionDescription(JSON.parse(decodeURIComponent(params.get('offer'))));
+    // const candidate = JSON.parse(decodeURIComponent(params.get('candidate')));
+
+    const connection = new RTCPeerConnection();
+    connection.ondatachannel = () => {
+        console.log('WOOT');
+    };
+
+    connection.onicecandidate = e => {
+        console.log(e);
+    };
+
+    (async () => {
+        const offer = await connection.createOffer();
+
+        connection.setLocalDescription(offer);
+
+        const response = await fetch(`http://${params.get('server')}:8080`, {
+            method: 'post',
+            mode: 'cors',
+            credentials: 'omit',
+            headers: {
+                'content-type': 'application/json',
+                'Content-Security-Policy': 'upgrade-insecure-requests',
+            },
+            body: JSON.stringify({
+                offer,
+                candidate: null,
+            }),
+        });
+        const content = await response.json();
+    })();
+</script>
