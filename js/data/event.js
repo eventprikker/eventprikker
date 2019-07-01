@@ -8,8 +8,8 @@ export default class Event extends Model
     {
         return {
             name: Types.String.default('the party'),
-            start: Types.String.default(''),
-            end: Types.String.default(''),
+            start: Types.Datetime.default(''),
+            end: Types.Datetime.default(''),
             link: Types.String.default(''),
             image: Types.String.default(''),
             participants: Types.List.type(Participant).default([]),
