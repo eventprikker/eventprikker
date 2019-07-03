@@ -20,7 +20,7 @@
     },
     "dependencies": {
         "@fyn-software/component": "^0.0.3",
-        "@fyn-software/suite": "^0.0.2",
+        "@fyn-software/suite": "^0.0.4",
         "@openid/appauth": "^1.2.1",
         "hellojs": "^1.17.1"
     }
