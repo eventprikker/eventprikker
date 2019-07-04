@@ -124,7 +124,6 @@ export default class Listing extends Fyn.Component
 
     ready()
     {
-        const event = this.shadow.querySelector('fyn-common-overlay-dialog[new]');
         const settings = this.shadow.querySelector('fyn-common-overlay-dialog[settings]');
 
         this.on('[fab]', {
