@@ -19,8 +19,9 @@
         "access": "public"
     },
     "dependencies": {
-        "@fyn-software/component": "^0.0.3",
-        "@fyn-software/suite": "^0.0.6",
+        "@fyn-software/component": "^0.1.0",
+        "@fyn-software/suite": "^0.1.0",
+        "@fyn-software/data": "^0.1.0",
         "@openid/appauth": "^1.2.1",
         "hellojs": "^1.17.1"
     }
