@@ -1,4 +1,5 @@
 import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
+import * as Types from '/node_modules/@fyn-software/data/types.js';
 import Dialog from '/node_modules/@fyn-software/suite/js/common/overlay/dialog.js';
 import Event from './data/event.js';
 import Participant from './data/participant.js';
@@ -8,7 +9,7 @@ export default class Listing extends Fyn.Component
     static get properties()
     {
         return {
-            events: [
+            events: Types.List.type(Event).default([
                 Event.fromData({
                     name: 'the party',
                     start: '19-04-2019',
@@ -117,8 +118,8 @@ export default class Listing extends Fyn.Component
                         }),
                     ],
                 }),
-            ],
-            user: null,
+            ]),
+            user: User,
         };
     }
 
@@ -155,7 +156,7 @@ export default class Listing extends Fyn.Component
                         settings.show();
 
                         return;
-                        
+
                     case 'logout':
                         for(const n of [ 'google', 'facebook' ])
                         {
