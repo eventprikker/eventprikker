@@ -149,7 +149,7 @@ export default class Listing extends Fyn.Component
                         settings.show();
 
                         return;
-                        
+
                     case 'logout':
                         for(const n of [ 'google', 'facebook' ])
                         {
