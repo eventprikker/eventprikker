@@ -1,8 +1,8 @@
-import Model from '/node_modules/@fyn-software/data/model.js';
+import * as Engine from '/node_modules/@fyn-software/data/engine.js';
 import * as Types from '/node_modules/@fyn-software/data/types.js';
 import { State } from './enums.js';
 
-export default class Participant extends Model
+export default class Participant extends Engine.Model
 {
     static get properties()
     {
@@ -11,6 +11,17 @@ export default class Participant extends Model
             name: Types.String.default(''),
             img: Types.String.default(''),
             state: State.default(State.invited),
+        };
+    }
+
+    static get sources()
+    {
+        return {
+            default: new Engine.Source(
+                new Engine.Connection.Connection(),
+                new Engine.Adapter.Adapter(),
+                new Engine.Schema.Schema(),
+            ),
         };
     }
 

@@ -1,8 +1,10 @@
-import Model from '/node_modules/@fyn-software/data/model.js';
+import * as Engine from '/node_modules/@fyn-software/data/engine.js';
 import * as Types from '/node_modules/@fyn-software/data/types.js';
 import Participant from './participant.js';
 
-export default class Event extends Model
+const EventprikkerIndexedDB = Engine.Connection.IndexedDB.define('eventprikker', { events: 'name' }, 1);
+
+export default class Event extends Engine.Model
 {
     static get properties()
     {
@@ -13,6 +15,17 @@ export default class Event extends Model
             link: Types.String.default(''),
             image: Types.String.default(''),
             participants: Types.List.type(Participant).default([]),
+        };
+    }
+
+    static get sources()
+    {
+        return {
+            default: new Engine.Source(
+                new EventprikkerIndexedDB('events'),
+                new Engine.Adapter.Adapter.default(),
+                new Engine.Schema.Schema(),
+            ),
         };
     }
 
