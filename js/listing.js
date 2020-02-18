@@ -1,10 +1,13 @@
 import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
+import * as Types from '/node_modules/@fyn-software/data/types.js';
 import Dialog from '/node_modules/@fyn-software/suite/js/common/overlay/dialog.js';
 import Event from './data/event.js';
 import Participant from './data/participant.js';
 
 export default class Listing extends Fyn.Component
 {
+    static localName = 'eventprikker-listing';
+
     static get properties()
     {
         return {
@@ -117,8 +120,8 @@ export default class Listing extends Fyn.Component
                         }),
                     ],
                 }),
-            ],
-            user: null,
+            ]),
+            user: Types.Object,
         };
     }
 
@@ -127,31 +130,20 @@ export default class Listing extends Fyn.Component
         console.log(await Array.fromAsync(Event.findAll()));
 
         const settings = this.shadow.querySelector('fyn-common-overlay-dialog[settings]');
+        const dialog = this.shadow.getElementById('newEvent');
 
-        this.on('[fab]', {
+        this.shadow.on('[fab]', {
             click: async e => {
-                const event = new Event;
-                const dialog = new Dialog;
+                const { name, start, end } = await dialog.show();
+                this.shadow.querySelector('#newEvent > fyn-common-form-form').clear();
 
-                dialog.appendChild(await event.toComponent());
-                const res = await dialog.show();
-
-                console.log(res);
-
-                // const [ result, data ] = await event.show();
-                //
-                // if(result === false)
-                // {
-                //     return;
-                // }
-                //
-                // console.log(Event.fromData(data), data);
+                console.log(new Event({ name, start, end }));
             },
         });
 
-        this.on('[user]', {
-            click: e => {
-                switch(e.detail.action)
+        this.shadow.on('[user]', {
+            click: ({ action }) => {
+                switch(action)
                 {
                     case 'settings':
                         settings.show();

@@ -2,9 +2,11 @@ import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
 
 export default class Entry extends Fyn.Component
 {
-    ready()
+    static localName = 'eventprikker-entry';
+
+    async ready()
     {
-        this.on('fyn-common-form-button[action]', {
+        this.shadow.on('fyn-common-form-button[action]', {
             click: (e, t) => {
                 for(const n of [ 'google', 'facebook' ])
                 {

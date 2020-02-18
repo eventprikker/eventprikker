@@ -21,7 +21,6 @@
     "dependencies": {
         "@fyn-software/component": "^0.0.3",
         "@fyn-software/suite": "^0.0.6",
-        "@openid/appauth": "^1.2.1",
-        "hellojs": "^1.17.1"
+        "@openid/appauth": "^1.2.1"
     }
 }

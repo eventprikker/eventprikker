@@ -9,6 +9,7 @@
 
         <title>eventprikker</title>
 
+        <link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/preload.css">
         <link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/style.css">
         <link rel="stylesheet" type="text/css" href="/css/style.css">
         
@@ -21,51 +22,53 @@
         <eventprikker-entry></eventprikker-entry>
 
         <script src="/node_modules/hellojs/dist/hello.all.min.js"></script>
-
         <script type="module">
             import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
             import Listing from './js/listing.js';
-
-            hello.on('auth.login', e => {
-                const entry = document.querySelector('eventprikker-entry');
-
-                if(entry !== null)
-                {
-                    entry.setAttribute('loading', '');
-
-                    hello(e.network)
-                        .api('me')
-                        .then(auth => {
-                            const listing = new Listing();
-                            listing.user = {
-                                id: auth.id,
-                                img: auth.picture || auth.image.url,
-                                name: auth.name,
-                            };
-
-                            document.body.replaceChild(listing, entry);
-                        });
-                }
-            });
-
-            hello.init({
-                google: '839025177734-m17e5fkep75sfnoeqlv4hfaa2kh4fb4p.apps.googleusercontent.com',
-                facebook: '2467180653355042',
-                github: '6e7385f4cda168a76917',
-            }, {
-                redirect_uri: 'https://eventprikker.nl',
-                state: window.location.href
-            });
-
-            navigator.serviceWorker.register('/worker.js');
 
             Fyn.Composer.register({
                 fyn: (n, t) => `/node_modules/@fyn-software/suite/${t}/${n.join('/')}.${t}`,
                 eventprikker: (n, t, ns) => `/${t}/${ n.join('/')}.${t}`,
             });
 
-            Fyn.Component.load('eventprikker-entry');
-            Fyn.Component.load('eventprikker-listing');
+            navigator.serviceWorker.register('/worker.js');
+
+            (async () => {
+                await Fyn.Component.load('eventprikker-entry');
+
+                hello.on('auth.login', e => {
+                    const entry = document.querySelector('eventprikker-entry');
+
+                    if(entry !== null)
+                    {
+                        entry.setAttribute('loading', '');
+
+                        hello(e.network)
+                            .api('me')
+                            .then(auth => {
+                                const listing = new Listing();
+
+                                listing.user = {
+                                    id: auth.id,
+                                    img: auth.picture || auth.image.url,
+                                    name: auth.name,
+                                };
+
+                                entry.replaceWith(listing);
+                            });
+                    }
+                });
+
+                hello.init({
+                    google: '839025177734-m17e5fkep75sfnoeqlv4hfaa2kh4fb4p.apps.googleusercontent.com',
+                    facebook: '2467180653355042',
+                    github: '6e7385f4cda168a76917',
+                }, {
+                    redirect_uri: 'https://eventprikker.nl',
+                    state: window.location.href
+                });
+            })();
+
         </script>
     </body>
 </html>

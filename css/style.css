@@ -7,3 +7,15 @@ body {
     display: grid;
     background: #222 radial-gradient(circle at top left, #0000 40%, #5575);
 }
+
+@media (max-width: 768px) {
+    fyn-common-overlay-dialog {
+        width: 100vw;
+        height: 100vh;
+        top: auto;
+        left: 0;
+        bottom: 0;
+        --translation: 0;
+        box-shadow: none;
+    }
+}

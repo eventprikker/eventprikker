@@ -117,16 +117,6 @@
             /*justify-self: center;*/
             overflow: hidden;
         }
-
-        fyn-common-overlay-dialog {
-            width: 100vw;
-            height: 100vh;
-            top: auto;
-            left: 0;
-            bottom: 0;
-            --translation: 0;
-            box-shadow: none;
-        }
     }
 </style>
 
@@ -145,7 +135,7 @@
     </fyn-common-form-button>
 </toolbar>
 
-<fyn-common-layout-grid for="{{ event in events }}" auto-fit>
+<fyn-common-layout-grid :for="{{ event of events }}" auto-fit>
     <activity style="--img: url({{ event.image }})">
         <h1>{{ event.name }}</h1>
 
@@ -155,7 +145,7 @@
 
         <a href="{{ event.link }}" target="_blank" rel="noopener nofollow">{{ event.link }}</a>
 
-        <fyn-common-layout-list for="{{ stat in event.stats }}" horizontal>
+        <fyn-common-layout-list :for="{{ stat of event.stats }}" horizontal>
             <fyn-common-graphics-icon
                 stat
                 icons="{{ stat.icon }}"
@@ -170,7 +160,7 @@
 
 <fyn-common-form-button fab icons="plus"></fyn-common-form-button>
 
-<fyn-common-overlay-dialog new img="/img/banner.jpg" title="New activity">
+<fyn-common-overlay-dialog id="newEvent" img="/img/banner.jpg" title="New activity">
     <fyn-common-form-form>
         <fyn-common-form-input label="Name" name="name"></fyn-common-form-input>
 
