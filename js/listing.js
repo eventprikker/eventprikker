@@ -1,6 +1,5 @@
 import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
 import * as Types from '/node_modules/@fyn-software/data/types.js';
-import Dialog from '/node_modules/@fyn-software/suite/js/common/overlay/dialog.js';
 import Event from './data/event.js';
 import Participant from './data/participant.js';
 
