@@ -3,6 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="description" content="Eventprikker - an event planning app">
         <meta name="google" content="notranslate">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="theme-color" content="#222">
@@ -10,18 +11,20 @@
         <title>eventprikker</title>
 
         <link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/preload.css">
-        <link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/style.css">
         <link rel="stylesheet" type="text/css" href="/css/style.css">
         
         <link rel="icon" href="/img/logo.png">
-        
+        <link rel="apple-touch-icon" href="/img/logo.png">
+
         <link rel="manifest" crossorigin="use-credentials" href="/manifest.json">
     </head>
 
     <body>
+        <noscript>This web app requires js to run</noscript>
+
         <eventprikker-entry></eventprikker-entry>
 
-        <script src="/node_modules/hellojs/dist/hello.all.min.js"></script>
+        <script src="/node_modules/hellojs/dist/hello.all.min.js" async defer></script>
         <script type="module">
             import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
             import Listing from './js/listing.js';
@@ -70,5 +73,6 @@
             })();
 
         </script>
+        <link rel="stylesheet" type="text/css" href="/node_modules/@fyn-software/suite/css/style.css">
     </body>
 </html>

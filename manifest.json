@@ -1,4 +1,5 @@
 {
+    "short_name": "Eventprikker",
     "name": "Eventprikker",
     "icons": [
         {
@@ -29,4 +30,4 @@
     "background_color": "#222",
     "orientation": "portrait",
     "gcm_sender_id": "248709007497"
-    }
+}
