@@ -1,0 +1,13 @@
+{
+    "name": "Event prikker",
+    "components": [
+        {
+            "namespace": "eventprikker-app",
+            "html": "html/",
+            "js": "js/"
+        }
+    ],
+    "stylesheets": [
+        [ "eventprikker.base", "./css/style.css" ]
+    ]
+}

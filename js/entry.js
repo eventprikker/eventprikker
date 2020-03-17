@@ -2,7 +2,8 @@ import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
 
 export default class Entry extends Fyn.Component
 {
-    static localName = 'eventprikker-entry';
+    static localName = 'eventprikker-app-entry';
+    static styles = [ 'fyn.suite.base' ];
 
     async ready()
     {

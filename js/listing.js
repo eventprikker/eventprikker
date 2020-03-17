@@ -2,10 +2,12 @@ import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
 import * as Types from '/node_modules/@fyn-software/data/types.js';
 import Event from './data/event.js';
 import Participant from './data/participant.js';
+import Settings from './settings.js';
 
 export default class Listing extends Fyn.Component
 {
-    static localName = 'eventprikker-listing';
+    static localName = 'eventprikker-app-listing';
+    static styles = [ 'fyn.suite.base' ];
 
     static get properties()
     {
@@ -141,11 +143,11 @@ export default class Listing extends Fyn.Component
         });
 
         this.shadow.on('[user]', {
-            click: ({ action }) => {
+            click: async ({ action }) => {
                 switch(action)
                 {
                     case 'settings':
-                        settings.show();
+                        await Settings.show();
 
                         return;
 

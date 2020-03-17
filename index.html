@@ -22,25 +22,22 @@
     <body>
         <noscript>This web app requires js to run</noscript>
 
-        <eventprikker-entry></eventprikker-entry>
+        <eventprikker-app-entry></eventprikker-app-entry>
 
         <script src="/node_modules/hellojs/dist/hello.all.min.js" async defer></script>
         <script type="module">
             import * as Fyn from '/node_modules/@fyn-software/component/fyn.js';
+            import Entry from './js/entry.js';
             import Listing from './js/listing.js';
-
-            Fyn.Composer.register({
-                fyn: (n, t) => `/node_modules/@fyn-software/suite/${t}/${n.join('/')}.${t}`,
-                eventprikker: (n, t, ns) => `/${t}/${ n.join('/')}.${t}`,
-            });
 
             navigator.serviceWorker.register('/worker.js');
 
             (async () => {
-                await Fyn.Component.load('eventprikker-entry');
+                await Fyn.Composer.register('/node_modules/@fyn-software/suite', '');
+                await Entry.init();
 
                 hello.on('auth.login', e => {
-                    const entry = document.querySelector('eventprikker-entry');
+                    const entry = document.querySelector('eventprikker-app-entry');
 
                     if(entry !== null)
                     {
