@@ -33,7 +33,7 @@
             navigator.serviceWorker.register('/worker.js');
 
             (async () => {
-                await Fyn.Composer.register('/node_modules/@fyn-software/suite', '');
+                await Fyn.Composer.register('/node_modules/@fyn-software/suite', 'https://eventprikker.nl');
                 await Entry.init();
 
                 hello.on('auth.login', e => {
