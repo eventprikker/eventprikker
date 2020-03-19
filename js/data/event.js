@@ -1,6 +1,7 @@
 import * as Engine from '/node_modules/@fyn-software/data/engine.js';
 import * as Types from '/node_modules/@fyn-software/data/types.js';
 import Participant from './participant.js';
+import { State } from './enums.js';
 
 const EventprikkerIndexedDB = Engine.Connection.IndexedDB.define('eventprikker', { events: 'name' }, 1);
 
@@ -43,8 +44,10 @@ export default class Event extends Engine.Model
             stats[participant.state.value]++;
         }
 
+        console.log(stats, this);
+
         return Object.entries(stats)
             .filter(([ ,c ]) => c > 0)
-            .map(([ t, c]) => Object.assign({ count: c }, Participant.state.valueOf(Participant.state[t])));
+            .map(([ t, c]) => ({ count: c, ...State.valueOf(State[t]) }));
     }
 }
